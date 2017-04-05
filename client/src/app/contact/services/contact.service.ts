@@ -5,6 +5,7 @@ import {Contact} from "../contact";
 export class ContactService {
 
   private contacts: [Contact];
+  private key = 'contacts';
 
   constructor() {
     this.contacts = [
@@ -15,5 +16,11 @@ export class ContactService {
 
   findContacts(): Contact[] {
     return this.contacts;
+  }
+  contactsToLocalStorage(contacts){
+    localStorage.setItem(this.key, JSON.stringify(contacts));
+  }
+  contactFromLocalStorage() {
+    this.contacts = JSON.parse(localStorage.getItem(this.key));
   }
 }
