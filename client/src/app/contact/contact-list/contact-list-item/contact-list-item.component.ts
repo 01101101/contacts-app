@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import {Contact} from "../../contact";
+
+
+
 
 @Component({
   selector: 'app-contact-list-item',
@@ -7,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactListItemComponent implements OnInit {
 
+ @Input() contact: [Contact];
   constructor() { }
 
   ngOnInit() {

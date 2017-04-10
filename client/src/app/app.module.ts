@@ -8,12 +8,14 @@ import {MaterialModule} from "@angular/material";
 import { AppComponent } from './app.component';
 import {ContactService} from "./contact/services/contact.service";
 import {ContactListComponent} from "./contact/contact-list/contact-list.component";
+import {ContactListItemComponent} from "./contact/contact-list/contact-list-item/contact-list-item.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactListComponent
+    ContactListComponent,
+    ContactListItemComponent
   ],
   imports: [
     BrowserModule,

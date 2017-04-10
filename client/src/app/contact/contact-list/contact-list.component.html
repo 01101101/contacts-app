@@ -1,3 +1,6 @@
 <div *ngFor="let contact of contacts" (click)="contactSelected(contact)">
-  {{contact.firstName + ' ' + contact.lastName + 'Address: ' + contact.streetAddress + ',' + contact.city}}
+  <app-contact-list-item [contact]="contact"></app-contact-list-item>
+  <button md-fab>
+    <md-icon>add</md-icon>
+  </button>
 </div>
