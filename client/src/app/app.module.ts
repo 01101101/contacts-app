@@ -7,15 +7,19 @@ import {MaterialModule} from "@angular/material";
 
 import { AppComponent } from './app.component';
 import {ContactService} from "./contact/services/contact.service";
+import { DialogService } from "./contact/services/dialog.service";
 import {ContactListComponent} from "./contact/contact-list/contact-list.component";
 import {ContactListItemComponent} from "./contact/contact-list/contact-list-item/contact-list-item.component";
+import { ContactDialogComponent } from './contact/contact-list/contact-dialog/contact-dialog.component';
+import { ContactApiService} from './contact/services/contact-api.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    ContactListItemComponent
+    ContactListItemComponent,
+    ContactDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,10 @@ import {ContactListItemComponent} from "./contact/contact-list/contact-list-item
     FlexLayoutModule,
     MaterialModule
   ],
-  providers: [ContactService],
+  entryComponents: [
+    ContactDialogComponent
+  ],
+  providers: [ContactService, DialogService, ContactApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

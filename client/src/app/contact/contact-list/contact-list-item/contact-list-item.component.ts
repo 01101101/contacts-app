@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import {Contact} from "../../contact";
+import {DialogService} from "../../services/dialog.service";
 
 
 
@@ -20,5 +21,6 @@ export class ContactListItemComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }

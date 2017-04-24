@@ -1,7 +1,7 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import {Contact} from "../contact";
 import {ContactService} from "../services/contact.service";
-
+import {DialogService} from "../services/dialog.service";
 
 
 @Component({
@@ -11,33 +11,38 @@ import {ContactService} from "../services/contact.service";
 })
 export class ContactListComponent implements OnInit {
 
-  @Input() contacts: Contact[];
-  @Output() select: EventEmitter<Contact>;
+
+  contacts: Contact[];
+  //@Input() contacts: Contact[];
   @Output() editContact: EventEmitter<Contact>;
   @Output() removeContact: EventEmitter<Contact>;
   @Output() showContactOnMap: EventEmitter<Contact>;
 
   newContact: Contact;
 
-
-
-  constructor() {
-    this.select = new EventEmitter();
-    this.newContact = new Contact(3,"", "", "", "", "");
+  constructor(private contactService: ContactService, private dialogService: DialogService) {
+    //this.contacts = contactService.findAllContacts();
   }
 
   ngOnInit() {
+   this.reloadContacts();
   }
-
-  contactSelected(contact: Contact) {
-    this.select.emit(contact);
+  reloadContacts (){
+   this.contacts = this.contactService.findAllContacts();
   }
- addContact() {
-    if (this.newContact) {
+  reloadContactsFromLocalStorage () {
 
-      this.contacts.push(new Contact(this.newContact.id, this.newContact.firstName,
-        this.newContact.lastName,this.newContact.phone, this.newContact.streetAddress, this.newContact.city));
-    }
+  }
+  reloadContactsFromHttp () {
+    this.contactService.findAllContactsFromHttp().subscribe(contacts => {
+      this.contacts = contacts;
+    });
+  }
+  openDialog() {
+    this.dialogService.contactDialog();
+  }
+  delete(contact : Contact) {
+    this.contactService;
   }
 
 }

@@ -1,15 +1,6 @@
-<app-contact-list [contacts]="contacts" (select)="contactSelected($event)"></app-contact-list>
+<app-contact-list></app-contact-list>
 
-<div *ngIf="selectedContact">
-  Selected:{{selectedContact.firstName}}
+<div fxLayout="column" fxLayoutAling="end">
+<button md-fab (click)="openDialog()"><md-icon>add</md-icon></button>
 </div>
 
-
-<md-input-container>
-  <input mdInput [(ngModel)]="textBox" type="text" required
-         placeholder="Yes! I love text">
-</md-input-container>
-
-<br>
-textBox: {{textBox}}
-<br>

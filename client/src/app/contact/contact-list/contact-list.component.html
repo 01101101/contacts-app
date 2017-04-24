@@ -1,26 +1,9 @@
-<div *ngFor="let contact of contacts" (click)="contactSelected(contact)">
+<div *ngFor="let contact of contacts">
   <app-contact-list-item [contact]="contact"></app-contact-list-item>
-  <button md-fab>
-    <md-icon>Add</md-icon>
-  </button>
+  <div fxLayout="row" fxLayoutAlign="center">
+  <button md-fab (click)="openDialog(contact)"><md-icon>edit</md-icon></button>
+  <button md-fab (click)="delete(contact)"><md-icon>delete</md-icon></button>
+  </div>
 </div>
 
-<div>
-<table>
-  <thead>New Contact</thead>
-  <tr> <input [(ngModel)] = "newContact.id" type="text" placeholder="id"> </tr>
-
-  <tr> <input [(ngModel)] = "newContact.firstName" type="text" placeholder="First Name"> </tr>
-
-  <tr> <input [(ngModel)] = "newContact.lastName" type="text" placeholder="Last Name"> </tr>
-
-  <tr> <input [(ngModel)] = "newContact.phone" type="text" placeholder="Phone Number"> </tr>
-
-  <tr> <input [(ngModel)] = "newContact.streetAddress" type="text" placeholder="Street Address"> </tr>
-
-  <tr> <input [(ngModel)] = "newContact.city" type="text" placeholder="City"> </tr>
-
-  <tr> <button (click)="addContact()">Add</button>
-</table>
-</div>
 

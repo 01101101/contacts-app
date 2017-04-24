@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {ContactService} from "./contact/services/contact.service";
 import {Contact} from "./contact/contact";
+import { DialogService } from "./contact/services/dialog.service";
+import { ContactDialogComponent } from './contact/contact-list/contact-dialog/contact-dialog.component';
+
 
 
 @Component({
@@ -11,13 +14,23 @@ import {Contact} from "./contact/contact";
 export class AppComponent {
 
   contacts: Contact[];
-  selectedContact: Contact;
-  textBox:string;
+  contact: Contact;
 
-  constructor(contactService: ContactService) {
-    this.contacts = contactService.findContacts();
+
+  constructor(private contactService: ContactService, private dialogService: DialogService) {
+
+
   }
-  contactSelected(contact: Contact) {
-    this.selectedContact = contact;
+
+  openDialog() {
+    if (this.contact){
+      this.dialogService.contactDialog(this.contact);
+    }else {
+     this.dialogService.contactDialog(this.contact = this.contactService.blankContact());
+
+    }
+
   }
+
+
 }

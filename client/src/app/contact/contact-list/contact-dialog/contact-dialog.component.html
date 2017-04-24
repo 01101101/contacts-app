@@ -1,0 +1,18 @@
+<h1 md-dialog-title>Contact</h1>
+<div md-dialog-content>
+  <table>
+  <thead>Contact id: {{contact.id}}</thead>
+  <tr><input [(ngModel)]="contact.firstName" type="text" required
+             placeholder="First Name"></tr>
+  <tr><input [(ngModel)]="contact.lastName" type="text" required
+             placeholder="Last Name"></tr>
+  <tr><input [(ngModel)]="contact.phone" type="text" required
+             placeholder="Phone Number"></tr>
+  <tr><input [(ngModel)]="contact.streetAddress" type="text" required
+             placeholder="Street Address"></tr>
+  <tr><input [(ngModel)]="contact.city" type="text" required
+             placeholder="City"></tr>
+  </table>
+
+  <button md-button (click)="add()">Add</button>
+</div>
