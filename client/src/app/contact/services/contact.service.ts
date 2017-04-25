@@ -9,7 +9,7 @@ export class ContactService {
   private contact: Contact;
   private newContact: Contact;
   private contacts: Contact[];
-  private key = 'contacts';
+
 
   constructor(private contactApiService: ContactApiService) {
     this.contacts = [
@@ -25,31 +25,21 @@ export class ContactService {
   findAllContactsFromHttp() {
     return this.contactApiService.findContacts();
   }
-  blankContact() {
-    return this.contact;
 
-  }
   saveContact(contact: Contact)  {
-    this.contacts.push(new Contact(contact.id,contact.firstName,
-      contact.lastName, contact.phone, contact.streetAddress, contact.city));
-    this.newContact = new Contact (this.newContact.id = this.contacts.length, this.newContact.firstName = "etunimi"
-      , this.newContact.lastName = "sukunimi ", this.newContact.phone =  "puh nro", this.newContact.streetAddress = "katu os",
-      this.newContact.city =  "kaupunni");
+    contact.id = this.contacts.length;
+    this.contacts.push(contact);
+    return this.contacts;
   }
-    /* if (this.newContact) {
 
-   this.contacts.push(new Contact(this.newContact.id, this.newContact.firstName,
-   this.newContact.lastName,this.newContact.phone, this.newContact.streetAddress, this.newContact.city));
-   }*/
-
-
-  contactsToLocalStorage(contacts){
-    localStorage.setItem(this.key, JSON.stringify(contacts));
-  }
-  contactFromLocalStorage() {
-    this.contacts = JSON.parse(localStorage.getItem(this.key));
-  }
   deleteContact (id : number){
+
+    for (let i = 0;i<this.contacts.length;i++) {
+      if (id == this.contact.id){
+        this.contacts.splice(i, 1)
+      }else{console.log("error no id")}
+
+    }
 
   }
 

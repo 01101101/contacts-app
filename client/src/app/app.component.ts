@@ -26,7 +26,7 @@ export class AppComponent {
     if (this.contact){
       this.dialogService.contactDialog(this.contact);
     }else {
-     this.dialogService.contactDialog(this.contact = this.contactService.blankContact());
+     this.dialogService.contactDialog(this.contact = new Contact());
 
     }
 

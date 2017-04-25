@@ -12,6 +12,9 @@ import {ContactListComponent} from "./contact/contact-list/contact-list.componen
 import {ContactListItemComponent} from "./contact/contact-list/contact-list-item/contact-list-item.component";
 import { ContactDialogComponent } from './contact/contact-list/contact-dialog/contact-dialog.component';
 import { ContactApiService} from './contact/services/contact-api.service';
+import { ContactComponent } from './contact/contact.component';
+//import {ContactLocalStorageService} from './contact/services/contact-local-storage.service';
+
 
 
 @NgModule({
@@ -19,7 +22,9 @@ import { ContactApiService} from './contact/services/contact-api.service';
     AppComponent,
     ContactListComponent,
     ContactListItemComponent,
-    ContactDialogComponent
+    ContactDialogComponent,
+    ContactComponent
+
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="space-around center">
+  <md-card-header>Contact: {{contact.id}}</md-card-header>
+<md-card-content>
 
-  <div>Contact id: {{contact.id}}</div>
   <div>
     <md-input-container><input mdInput [(ngModel)]="contact.firstName" type="text" required
                                placeholder="First Name"></md-input-container>
@@ -21,7 +22,11 @@
     <md-input-container><input mdInput [(ngModel)]="contact.city" type="text" required
                                placeholder="City"></md-input-container>
   </div>
-
+</md-card-content>
+  <md-card-actions>
+  <button md-fab (click)="editItem(contact)"><md-icon>edit</md-icon></button>
+  <button md-fab (click)="deleteItem(contact)"><md-icon>delete</md-icon></button>
+  </md-card-actions>
 </div>
 
 <!-- <table>

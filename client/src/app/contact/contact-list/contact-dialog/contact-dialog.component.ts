@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {Contact} from "../../contact";
 import {MdDialogRef, MdDialog} from "@angular/material";
 import {ContactService} from "../../services/contact.service";
@@ -13,19 +13,18 @@ import {ContactService} from "../../services/contact.service";
 
 export class ContactDialogComponent implements OnInit {
 
-  dialogRef;
   contact: Contact;
+  dialogRef;
+
 
  constructor(dialogRef: MdDialogRef<ContactDialogComponent>, private contactService: ContactService) {
     this.dialogRef = dialogRef;
  }
 
   add() {
-   this.dialogRef.close(this.contact)
+   this.dialogRef.close(this.contact);
    this.contactService.saveContact(this.contact);
   }
-
-
 
   ngOnInit() {
   }

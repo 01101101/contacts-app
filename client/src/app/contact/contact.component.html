@@ -1,0 +1,9 @@
+<app-contact-list [contacts]="contacts"
+                  (editRequest)="editContact($event)"
+                  (deleteRequest)="deleteContact($event)">
+
+
+</app-contact-list>
+<div fxLayout="column" fxLayoutAling="end">
+  <button md-fab (click)="openDialog()"><md-icon>add</md-icon></button>
+</div>

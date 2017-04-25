@@ -11,25 +11,23 @@ import {DialogService} from "../services/dialog.service";
 })
 export class ContactListComponent implements OnInit {
 
-
-  contacts: Contact[];
-  //@Input() contacts: Contact[];
-  @Output() editContact: EventEmitter<Contact>;
-  @Output() removeContact: EventEmitter<Contact>;
+  contact: Contact;
+  @Input() contacts: Contact[];
+  @Output() editRequest: EventEmitter<Contact>;
+  @Output() deleteRequest: EventEmitter<Contact>;
   @Output() showContactOnMap: EventEmitter<Contact>;
 
-  newContact: Contact;
+
 
   constructor(private contactService: ContactService, private dialogService: DialogService) {
-    //this.contacts = contactService.findAllContacts();
+    this.editRequest = new EventEmitter();
+    this.deleteRequest = new EventEmitter();
   }
 
   ngOnInit() {
-   this.reloadContacts();
+
   }
-  reloadContacts (){
-   this.contacts = this.contactService.findAllContacts();
-  }
+
   reloadContactsFromLocalStorage () {
 
   }
@@ -39,10 +37,19 @@ export class ContactListComponent implements OnInit {
     });
   }
   openDialog() {
-    this.dialogService.contactDialog();
+    if (this.contact){
+      this.dialogService.contactDialog(this.contact);
+    }else {
+      this.dialogService.contactDialog(this.contact = new Contact());
+    }
+
   }
-  delete(contact : Contact) {
-    this.contactService;
+ deleteContact(){
+    this.deleteRequest.emit(this.contact);
+
+  }
+  editContact() {
+   this.editRequest.emit(this.contact);
   }
 
 }
