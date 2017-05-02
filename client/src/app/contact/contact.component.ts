@@ -22,18 +22,30 @@ export class ContactComponent implements OnInit {
   reloadContacts (){
     this.contacts = this.contactService.findAllContacts();
   }
-  editContact() {}
+  editContact(contact: Contact) {
+    this.dialogService.contactDialog(contact);
+  }
 
   deleteContact(contact: Contact) {
+    console.log("contact.component.deleteContact" + contact.id);
+
     this.contactService.deleteContact(contact.id);
   }
   openDialog() {
     if (this.contact){
-      this.dialogService.contactDialog(this.contact);
+      this.editContact(this.contact);
     }else {
       this.dialogService.contactDialog(this.contact = new Contact());
     }
 
+  }
+  reloadContactsFromLocalStorage () {
+
+  }
+  reloadContactsFromHttp () {
+    this.contactService.findAllContactsFromHttp().subscribe(contacts => {
+      this.contacts = contacts;
+    });
   }
 
 }

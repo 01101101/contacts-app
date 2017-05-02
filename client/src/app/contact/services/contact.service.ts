@@ -5,20 +5,15 @@ import {ContactApiService} from "./contact-api.service";
 @Injectable()
 export class ContactService {
 
-
   private contact: Contact;
-  private newContact: Contact;
   private contacts: Contact[];
-
 
   constructor(private contactApiService: ContactApiService) {
     this.contacts = [
       new Contact(0, 'Masa', 'Masalainen','123345678', 'Skinnarilantie 36', 'Lappeenranta'),
       new Contact(1, 'Pena', 'Penalainen','123453622', 'Skinnarilantie 1', 'Lappeenranta')
     ]
-    this.newContact = new Contact(this.contacts.length,"testi", "", "", "", "");
   }
-
   findAllContacts(): Contact[]{
     return this.contacts;
   }
@@ -32,16 +27,13 @@ export class ContactService {
     return this.contacts;
   }
 
-  deleteContact (id : number){
-
+  deleteContact (id: number){
+    console.log("contact.service.deleteContact," + id);
     for (let i = 0;i<this.contacts.length;i++) {
-      if (id == this.contact.id){
+      if (id == this.contacts[i].id){
         this.contacts.splice(i, 1)
       }else{console.log("error no id")}
 
     }
-
   }
-
-
 }

@@ -13,7 +13,7 @@ import {ContactListItemComponent} from "./contact/contact-list/contact-list-item
 import { ContactDialogComponent } from './contact/contact-list/contact-dialog/contact-dialog.component';
 import { ContactApiService} from './contact/services/contact-api.service';
 import { ContactComponent } from './contact/contact.component';
-//import {ContactLocalStorageService} from './contact/services/contact-local-storage.service';
+
 
 
 

@@ -16,6 +16,4 @@ export class Contact {
     this.streetAddress = streetAddress;
     this.city = city;
   }
-
-
 }

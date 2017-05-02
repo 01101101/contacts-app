@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="space-around center">
-  <md-card-header>Contact: {{contact.id}}</md-card-header>
+  <md-card-header ><i class="material-icons md-48">account_circle</i>Contact: {{contact.id}}</md-card-header>
 <md-card-content>
 
   <div>
@@ -24,22 +24,7 @@
   </div>
 </md-card-content>
   <md-card-actions>
-  <button md-fab (click)="editItem(contact)"><md-icon>edit</md-icon></button>
-  <button md-fab (click)="deleteItem(contact)"><md-icon>delete</md-icon></button>
+  <button md-mini (click)="editItem(contact)"><md-icon>create</md-icon></button>
+  <button md-mini (click)="deleteItem(contact)"><md-icon>delete</md-icon></button>
   </md-card-actions>
 </div>
-
-<!-- <table>
-   <thead>Contact id: {{contact.id}}</thead>
-   <tr><md-input-container><input mdInput [(ngModel)]="contact.firstName" type="text" required
-              placeholder="First Name"></md-input-container></tr>
-   <tr><md-input-container><input mdInput [(ngModel)]="contact.lastName" type="text" required
-              placeholder="Last Name"></md-input-container></tr>
-   <tr><md-input-container><input mdInput [(ngModel)]="contact.phone" type="text" required
-              placeholder="Phone Number"></md-input-container></tr>
-   <tr><md-input-container><input mdInput [(ngModel)]="contact.streetAddress" type="text" required
-              placeholder="Street Address"></md-input-container></tr>
-   <tr><md-input-container><input mdInput [(ngModel)]="contact.city" type="text" required
-              placeholder="City"></md-input-container></tr>
- </table>-->
-

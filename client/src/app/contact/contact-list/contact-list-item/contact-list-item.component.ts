@@ -3,8 +3,6 @@ import {Contact} from "../../contact";
 import {DialogService} from "../../services/dialog.service";
 
 
-
-
 @Component({
   selector: 'app-contact-list-item',
   templateUrl: './contact-list-item.component.html',
@@ -13,20 +11,28 @@ import {DialogService} from "../../services/dialog.service";
 export class ContactListItemComponent implements OnInit {
 
  @Input() contact: Contact;
- @Input() edit: EventEmitter<Contact>;
- @Input() delete: EventEmitter<Contact>;
- @Input() showOnMap: EventEmitter<Contact>;
+ @Output() edit:EventEmitter<Contact> =  new EventEmitter();
+ @Output() delete:EventEmitter<Contact> = new EventEmitter();
+ @Output() showOnMap: EventEmitter<Contact> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+
+  }
+
 
   ngOnInit() {
   }
-  deleteItem() {
-    console.log("delete" + this.contact.id + ", " + this.contact.firstName);
-    this.delete.emit(this.contact);
+  deleteItem(contact: Contact) {
+    console.log("delete" + contact.id + ", " + contact.firstName);
+    this.delete.emit(contact);
+
   }
-  editItem() {
+  editItem(contact: Contact) {
     console.log("edit");
-    this.edit.emit(this.contact);
+    this.edit.emit(contact);
+
+  }
+  showContactOnMap(contact: Contact) {
+    this.showOnMap.emit(contact);
   }
 }

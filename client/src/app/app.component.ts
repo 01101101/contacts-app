@@ -22,15 +22,7 @@ export class AppComponent {
 
   }
 
-  openDialog() {
-    if (this.contact){
-      this.dialogService.contactDialog(this.contact);
-    }else {
-     this.dialogService.contactDialog(this.contact = new Contact());
 
-    }
-
-  }
 
 
 }

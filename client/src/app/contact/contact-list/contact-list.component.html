@@ -1,7 +1,7 @@
 <div *ngFor="let contact of contacts">
   <app-contact-list-item [contact]="contact"
-                         (edit) = "editContact($event)"
-                         (delete) ="deleteContact($event)">
+                         (edit)="contactEdit($event)"
+                         (delete)="contactDelete($event)">
 
   </app-contact-list-item>
 
