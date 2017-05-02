@@ -22,8 +22,18 @@ export class ContactService {
   }
 
   saveContact(contact: Contact)  {
-    contact.id = this.contacts.length;
-    this.contacts.push(contact);
+    console.log("contact.service, " + contact.id)
+    if (contact.id) {
+      for (let i = 0;i<this.contacts.length;i++) {
+        if(contact.id == this.contacts[i].id){
+          contact = this.contacts[i];
+        }
+      }
+    }else {
+      contact.id = this.contacts.length;
+      this.contacts.push(contact);
+    }
+
     return this.contacts;
   }
 
@@ -32,7 +42,8 @@ export class ContactService {
     for (let i = 0;i<this.contacts.length;i++) {
       if (id == this.contacts[i].id){
         this.contacts.splice(i, 1)
-      }else{console.log("error no id")}
+
+      }
 
     }
   }

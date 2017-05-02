@@ -35,7 +35,7 @@ export class ContactComponent implements OnInit {
     if (this.contact){
       this.editContact(this.contact);
     }else {
-      this.dialogService.contactDialog(this.contact = new Contact());
+      this.dialogService.contactDialog(new Contact());
     }
 
   }
