@@ -13,7 +13,7 @@ export class ContactLocalStorageService {
   contactsToLocalStorage(contacts){
     localStorage.setItem(this.key, JSON.stringify(contacts));
   }
-  contactFromLocalStorage() {
+  contactsFromLocalStorage() {
     this.contacts = JSON.parse(localStorage.getItem(this.key));
   }
 }

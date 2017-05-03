@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Contact} from "../contact";
 import {ContactApiService} from "./contact-api.service";
+//import {ContactLocalStorageService} from "./contact-local-storage.service";
 
 @Injectable()
 export class ContactService {
 
   private contact: Contact;
   private contacts: Contact[];
+  private highestID: number;
+
+
+  //, private contactLocalStorageService: ContactLocalStorageService
 
   constructor(private contactApiService: ContactApiService) {
     this.contacts = [
@@ -20,9 +25,13 @@ export class ContactService {
   findAllContactsFromHttp() {
     return this.contactApiService.findContacts();
   }
+ /* findAllContactsFromLocalStorage() {
+    return this.contactLocalStorageService.contactsFromLocalStorage();
+  }*/
 
   saveContact(contact: Contact)  {
     console.log("contact.service, " + contact.id)
+
     if (contact.id) {
       for (let i = 0;i<this.contacts.length;i++) {
         if(contact.id == this.contacts[i].id){
@@ -30,10 +39,14 @@ export class ContactService {
         }
       }
     }else {
-      contact.id = this.contacts.length;
+      for (let k = 0; k<this.contacts.length;k++) {
+        if (this.highestID <= this.contacts[k].id) {}
+        this.highestID = this.contacts[k].id;
+      }
+      contact.id = this.highestID + 1;
       this.contacts.push(contact);
     }
-
+    //this.contactLocalStorageService.contactsToLocalStorage(this.contacts);
     return this.contacts;
   }
 
@@ -46,5 +59,8 @@ export class ContactService {
       }
 
     }
+  }
+  showContactOnMap () {
+
   }
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MaterialModule} from "@angular/material";
+import  { RouterModule } from "@angular/router";
 
 import { AppComponent } from './app.component';
 import {ContactService} from "./contact/services/contact.service";
@@ -13,8 +14,19 @@ import {ContactListItemComponent} from "./contact/contact-list/contact-list-item
 import { ContactDialogComponent } from './contact/contact-list/contact-dialog/contact-dialog.component';
 import { ContactApiService} from './contact/services/contact-api.service';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './user/login/login.component';
+//import {ContactLocalStorageService } from './contact/services/contact-local-storage.service';
 
-
+const routes = [
+  {
+    path: 'app-login',
+    component: LoginComponent
+  },
+  {
+    path: 'app-contact',
+    component: ContactComponent
+  }
+]
 
 
 @NgModule({
@@ -23,7 +35,8 @@ import { ContactComponent } from './contact/contact.component';
     ContactListComponent,
     ContactListItemComponent,
     ContactDialogComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
 
   ],
   imports: [
@@ -31,7 +44,8 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     HttpModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule.forRoot(routes)
   ],
   entryComponents: [
     ContactDialogComponent

@@ -3,28 +3,22 @@
 <md-card-content>
 
   <div>
-    <md-input-container><input mdInput [(ngModel)]="contact.firstName" type="text" required
-                               placeholder="First Name"></md-input-container>
+    {{contact.firstName}}
   </div>
   <div>
-    <md-input-container><input mdInput [(ngModel)]="contact.lastName" type="text" required
-                               placeholder="Last Name"></md-input-container>
+    {{contact.lastName}}
   </div>
   <div>
-    <md-input-container><input mdInput [(ngModel)]="contact.phone" type="text" required
-                               placeholder="Phone Number"></md-input-container>
+    {{contact.phone}}
   </div>
   <div>
-    <md-input-container><input mdInput [(ngModel)]="contact.streetAddress" type="text" required
-                               placeholder="Street Address"></md-input-container>
+    {{contact.streetAddress + ", " + contact.city}}
   </div>
-  <div>
-    <md-input-container><input mdInput [(ngModel)]="contact.city" type="text" required
-                               placeholder="City"></md-input-container>
-  </div>
+
 </md-card-content>
   <md-card-actions>
   <button md-mini (click)="editItem(contact)"><md-icon>create</md-icon></button>
   <button md-mini (click)="deleteItem(contact)"><md-icon>delete</md-icon></button>
+  <button md-mini (click)="showContactOnMap(contact)"><md-icon>location_on</md-icon></button>
   </md-card-actions>
 </div>

@@ -1,4 +1,17 @@
-<app-contact></app-contact>
 
 
+<md-sidenav-container class="ca-sidenav-container">
+  <md-sidenav class="ca-sidenav" #sidenav [mode]="sidenavMode" [opened]="sidenavMode == 'side'">
+    Sidenav content
+  </md-sidenav>
+  <md-toolbar class="mat-elevation-z5" color="primary">
+    Toolbar
+  </md-toolbar>
+  <div class="ca-app-container">
+
+    <app-contact></app-contact>
+    <!--Angular router näyttää komponentit tässä
+    <router-outlet></router-outlet>-->
+  </div>
+</md-sidenav-container>
 
