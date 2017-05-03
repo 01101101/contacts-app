@@ -4,7 +4,6 @@ import {MdDialogRef, MdDialog} from "@angular/material";
 import {ContactService} from "../../services/contact.service";
 
 
-
 @Component({
   selector: 'app-contact-dialog',
   templateUrl: './contact-dialog.component.html',
@@ -17,13 +16,13 @@ export class ContactDialogComponent implements OnInit {
   dialogRef;
 
 
- constructor(dialogRef: MdDialogRef<ContactDialogComponent>, private contactService: ContactService) {
+  constructor(dialogRef: MdDialogRef<ContactDialogComponent>, private contactService: ContactService) {
     this.dialogRef = dialogRef;
- }
+  }
 
   add() {
-   this.dialogRef.close(this.contact);
-   this.contactService.saveContact(this.contact);
+    this.dialogRef.close(this.contact);
+    this.contactService.saveContact(this.contact);
   }
 
   ngOnInit() {

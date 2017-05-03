@@ -15,16 +15,22 @@ import { ContactDialogComponent } from './contact/contact-list/contact-dialog/co
 import { ContactApiService} from './contact/services/contact-api.service';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './user/login/login.component';
+import { MapDialogComponent } from './map/map-dialog/map-dialog.component';
 //import {ContactLocalStorageService } from './contact/services/contact-local-storage.service';
 
 const routes = [
   {
-    path: 'app-login',
-    component: LoginComponent
+    path: '',
+    redirectTo: 'app-login',
+    pathMatch: 'full'
   },
   {
     path: 'app-contact',
     component: ContactComponent
+  },
+  {
+    path: 'app-login',
+    component: LoginComponent
   }
 ]
 
@@ -36,7 +42,8 @@ const routes = [
     ContactListItemComponent,
     ContactDialogComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    MapDialogComponent
 
   ],
   imports: [
