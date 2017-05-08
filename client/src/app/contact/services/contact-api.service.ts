@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {Contact} from "../contact";
+import { environment } from '../../../environments/environment';
+import {ContactStorage} from "./contact-storage";
 
 @Injectable()
-export class ContactApiService {
+export class ContactApiService implements ContactStorage{
 
-   url = 'http://localhost:60829/api/contacts';
+   url = environment.endpointUrl + '/contacts';
 
   constructor(private http: Http) { }
 
-  findContacts() {
+  findAllContacts() {
 
    /* return this.http.get(url).map(function(response){
       return response.json() as Contact[];

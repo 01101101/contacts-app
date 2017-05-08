@@ -1,22 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from "@angular/material";
-import  { RouterModule } from "@angular/router";
+import  {RouterModule} from "@angular/router";
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {ContactService} from "./contact/services/contact.service";
-import { DialogService } from "./contact/services/dialog.service";
+import {DialogService} from "./contact/services/dialog.service";
 import {ContactListComponent} from "./contact/contact-list/contact-list.component";
 import {ContactListItemComponent} from "./contact/contact-list/contact-list-item/contact-list-item.component";
-import { ContactDialogComponent } from './contact/contact-list/contact-dialog/contact-dialog.component';
-import { ContactApiService} from './contact/services/contact-api.service';
-import { ContactComponent } from './contact/contact.component';
-import { LoginComponent } from './user/login/login.component';
-import { MapDialogComponent } from './map/map-dialog/map-dialog.component';
-//import {ContactLocalStorageService } from './contact/services/contact-local-storage.service';
+import {ContactDialogComponent} from './contact/contact-list/contact-dialog/contact-dialog.component';
+import {ContactApiService} from './contact/services/contact-api.service';
+import {ContactComponent} from './contact/contact.component';
+import {LoginComponent} from './user/login/login.component';
+import {MapDialogComponent} from './map/map-dialog/map-dialog.component';
+import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
+import {ContactLocalStorageService} from "./contact/services/contact-local-storage.service";
+
 
 const routes = [
   {
@@ -43,7 +45,8 @@ const routes = [
     ContactDialogComponent,
     ContactComponent,
     LoginComponent,
-    MapDialogComponent
+    MapDialogComponent,
+    ContactAddressPipe
 
   ],
   imports: [
@@ -57,7 +60,8 @@ const routes = [
   entryComponents: [
     ContactDialogComponent
   ],
-  providers: [ContactService, DialogService, ContactApiService],
+  providers: [ContactService, DialogService, ContactApiService, ContactLocalStorageService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
