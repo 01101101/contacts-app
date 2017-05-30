@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+
   Enter() {
     this.router.navigate(['app-contact'])
   }
-
 }

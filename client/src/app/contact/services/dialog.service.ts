@@ -12,7 +12,7 @@ export class DialogService {
 
 
   public contactDialog(contact?: Contact) {
-
+    console.log("dialogService-contactDialog: ");
     let dialogRef = this.dialog.open(ContactDialogComponent);
     dialogRef.componentInstance.contact = contact;
       return dialogRef.afterClosed();

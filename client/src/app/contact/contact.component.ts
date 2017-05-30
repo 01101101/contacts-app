@@ -4,6 +4,7 @@ import {ContactService} from "./services/contact.service";
 import {DialogService} from "./services/dialog.service";
 
 
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -18,34 +19,40 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.reloadContacts();
+
   }
+  addContact() {
+    this.openDialog(null);
+  }
+
   reloadContacts (){
-    this.contacts = this.contactService.findAllContacts();
+    this.contactService.findAllContacts().subscribe(contacts => {
+      this.contacts = contacts;
+      console.log("contact.component: reloadContacts");
+    });
   }
   editContact(contact: Contact) {
-    this.dialogService.contactDialog(contact);
+    this.openDialog(contact);
+    //this.dialogService.contactDialog(contact);
   }
 
   deleteContact(contact: Contact) {
-    console.log("contact.component.deleteContact" + contact.id);
+    console.log("contact.component.deleteContact");
 
-    this.contactService.deleteContact(contact.id);
+    this.contactService.deleteContact(contact);
   }
-  openDialog() {
-    if (this.contact){
-      this.editContact(this.contact);
+  openDialog(contact?: Contact) {
+
+    if (contact){
+      console.log("contact.component.openDialog: ");
+      this.dialogService.contactDialog(contact);
     }else {
+
       this.dialogService.contactDialog(new Contact());
     }
 
   }
-  reloadContactsFromLocalStorage () {
 
-  }
-  reloadContactsFromHttp () {
-    this.contactService.findAllContactsFromHttp().subscribe(contacts => {
-      this.contacts = contacts;
-    });
-  }
+
 
 }

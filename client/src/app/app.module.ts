@@ -34,7 +34,7 @@ const routes = [
     path: 'app-login',
     component: LoginComponent
   }
-]
+];
 
 
 @NgModule({

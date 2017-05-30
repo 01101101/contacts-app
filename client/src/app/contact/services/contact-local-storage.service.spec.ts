@@ -1,14 +1,15 @@
 import {inject, TestBed} from '@angular/core/testing';
 import * as _ from 'lodash';
+import 'rxjs/add/observable/of';
+
 
 import {ContactLocalStorageService} from './contact-local-storage.service';
 import {Contact} from "../contact";
 
 
-
 describe('ContactLocalStorageService', () => {
 
-  let localStorageKey = 'contacts';
+  let localStorageKey = 'ca-contacts';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -22,11 +23,11 @@ describe('ContactLocalStorageService', () => {
 
     spyOn(localStorage, 'getItem').and.callFake(function (key) {
       return store[key];
-    })
+    });
 
     spyOn(localStorage, 'setItem').and.callFake(function (key, value) {
       return store[key] = value;
-    })
+    });
 
   });
 
@@ -44,13 +45,13 @@ describe('ContactLocalStorageService', () => {
   }));
 
   it('#findAllContacts Should return all contacts', inject([ContactLocalStorageService], (service: ContactLocalStorageService) => {
-    let contacts = contactArray();
-    localStorage.setItem(localStorageKey, JSON.stringify(contacts));
-    let contactIds = _.map(contacts, 'id');
+    let dummyContacts = contactArray();
+    localStorage.setItem(localStorageKey, JSON.stringify(dummyContacts));
+    //let contactIds = _.map(contacts, 'id');
     service.findAllContacts().subscribe((contacts: Contact[]) => {
-      expect(contacts.length).toBe(3);
+      expect(contacts.length).toEqual(3);
       _.forEach(contacts, function(c) {
-        expect(contactIds).toContain(c.id);
+        expect(dummyContacts).toContain(_.create(Contact.prototype, c));
       })
     })
   }));

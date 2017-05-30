@@ -9,58 +9,33 @@ import {ContactLocalStorageService} from "./contact-local-storage.service";
 export class ContactService {
 
   private contact: Contact;
-  private contacts: Contact[];
-  private highestID: number;
-  contactStorage: ContactStorage;
+  public contacts: Contact[];
+  private contactStorage: ContactStorage;
 
 
   constructor(private contactApiService: ContactApiService, private contactLocalStorageService: ContactLocalStorageService) {
     this.contacts = [
-      new Contact(0, 'Masa', 'Masalainen','123345678', 'Skinnarilantie 36', 'Lappeenranta'),
-      new Contact(1, 'Pena', 'Penalainen','123453622', 'Skinnarilantie 1', 'Lappeenranta')
-    ]
+      new Contact(1, 'Masa', 'Masalainen','123345678', 'Skinnarilantie 36', 'Lappeenranta'),
+      new Contact(2, 'Pena', 'Penalainen','123453622', 'Skinnarilantie 1', 'Lappeenranta')
+    ];
     this.contactStorage = environment.endpointUrl ? contactApiService : contactLocalStorageService;
-    console.log(environment);
+
   }
-  findAllContacts(): Contact[]{
-    return this.contacts;
+  findAllContacts(){
+    return this.contactStorage.findAllContacts();
   }
-  findAllContactsFromHttp() {
-    return this.contactApiService.findAllContacts();
-  }
+
 
   saveContact(contact: Contact)  {
-    console.log("contact.service, " + contact.id)
+    console.log("contact.service.saveContact, ");
 
-    if (contact.id) {
-      for (let i = 0;i<this.contacts.length;i++) {
-        if(contact.id == this.contacts[i].id){
-          contact = this.contacts[i];
-        }
-      }
-    }else {
-      for (let k = 0; k<this.contacts.length;k++) {
-        if (this.highestID <= this.contacts[k].id) {}
-        this.highestID = this.contacts[k].id;
-      }
-      contact.id = this.highestID + 1;
-      this.contacts.push(contact);
-    }
-    //this.contactLocalStorageService.contactsToLocalStorage(this.contacts);
-    return this.contacts;
+    return this.contactStorage.saveContact(contact);
   }
 
-  deleteContact (id: number){
-    console.log("contact.service.deleteContact," + id);
-    for (let i = 0;i<this.contacts.length;i++) {
-      if (id == this.contacts[i].id){
-        this.contacts.splice(i, 1)
+  deleteContact (contact: Contact){
+    console.log("contact.service.deleteContact,");
 
-      }
-
-    }
+   return this.contactStorage.deleteContact(contact);
   }
-  showContactOnMap () {
 
-  }
 }

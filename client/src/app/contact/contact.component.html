@@ -1,9 +1,10 @@
 <app-contact-list [contacts]="contacts"
+
                   (editRequest)="editContact($event)"
-                  (deleteRequest)="deleteContact($event)">
+                  (removeRequest)="deleteContact($event)">
 
 
 </app-contact-list>
 <div  fxLayoutAlign="end end">
-  <button md-mini (click)="openDialog()"><md-icon>add</md-icon></button>
+  <button md-mini (click)="addContact()"><md-icon>add</md-icon></button>
 </div>

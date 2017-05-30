@@ -13,16 +13,15 @@ import {ContactService} from "../../services/contact.service";
 export class ContactDialogComponent implements OnInit {
 
   contact: Contact;
-  dialogRef;
 
-
-  constructor(dialogRef: MdDialogRef<ContactDialogComponent>, private contactService: ContactService) {
+  constructor(private dialogRef: MdDialogRef<ContactDialogComponent>, private contactService: ContactService) {
     this.dialogRef = dialogRef;
   }
 
   add() {
     this.dialogRef.close(this.contact);
     this.contactService.saveContact(this.contact);
+    console.log("contact.dialog.add: ");
   }
 
   ngOnInit() {

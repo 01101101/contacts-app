@@ -12,7 +12,7 @@ export class ContactListItemComponent implements OnInit {
 
  @Input() contact: Contact;
  @Output() edit:EventEmitter<Contact> =  new EventEmitter();
- @Output() delete:EventEmitter<Contact> = new EventEmitter();
+ @Output() remove:EventEmitter<Contact> = new EventEmitter();
  @Output() showOnMap: EventEmitter<Contact> = new EventEmitter();
 
   constructor() {
@@ -22,17 +22,17 @@ export class ContactListItemComponent implements OnInit {
 
   ngOnInit() {
   }
-  deleteItem(contact: Contact) {
-    console.log("delete" + contact.id + ", " + contact.firstName);
-    this.delete.emit(contact);
+  deleteItem() {
+    console.log("delete");
+    this.remove.emit(this.contact);
 
   }
-  editItem(contact: Contact) {
+  editItem() {
     console.log("edit");
-    this.edit.emit(contact);
+    this.edit.emit(this.contact);
 
   }
-  showContactOnMap(contact: Contact) {
-    this.showOnMap.emit(contact);
+  showContactOnMap() {
+    this.showOnMap.emit(this.contact);
   }
 }
