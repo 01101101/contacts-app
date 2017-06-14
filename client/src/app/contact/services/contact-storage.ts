@@ -5,4 +5,5 @@ export interface ContactStorage {
   saveContact(contact: Contact): Observable<any>;
   deleteContact(contact: Contact): Observable<any>;
   findAllContacts(): Observable<Contact[]>;
+  //findContactById(id): Observable<Contact>;
 }

@@ -34,10 +34,10 @@ export class ContactLocalStorageService implements ContactStorage {
      })
     }
     this.saveContactsToLocalStorage(contacts);
-    return this.findContactsById(contact.id);
+    return this.findContactById(contact.id);
   }
 
-  findContactsById(id): Observable<Contact> {
+  findContactById(id): Observable<Contact> {
     let contacts: Contact[] = this.getContactsFromLocalStorage();
     return Observable.of(_.find(contacts,{'id': id}));
   }
