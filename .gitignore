@@ -1,3 +1,4 @@
 /client/*.iml
 /server/ContactsApp/obj
 /server/ContactsApp/bin
+/server/.vs
